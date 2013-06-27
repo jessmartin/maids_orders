@@ -7,11 +7,13 @@ Maid.rules do
   end
 
   rule 'Sort Camera Uploads into Photos directory' do
-    found = dir('~/Dropbox/Camera Uploads/2012-12-14 10.08.57.jpg').select do |path|
+    found = dir('~/Dropbox/Camera Uploads/*.jpg').select do |path|
       taken_on = EXIFR::JPEG.new(path).date_time
-      destination = "~/Dropbox/Photos/#{taken_on.year}/#{"%02d" % taken_on.month}/#{"%02d" % taken_on.day}/"
-      FileUtils.mkdir_p destination
-      move(path, destination)
+      if taken_on
+        destination = "/Users/jessmartin/Dropbox/Photos/#{taken_on.year}/#{"%02d" % taken_on.month}/#{"%02d" % taken_on.day}/"
+        FileUtils.mkdir_p destination
+        move(path, destination)
+      end
     end
   end
 
