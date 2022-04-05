@@ -26,7 +26,7 @@ GEM
     systemu (2.5.2)
     thor (0.17.0)
     xdg (2.2.3)
-    yajl-ruby (1.1.0)
+    yajl-ruby (1.4.2)
 
 PLATFORMS
   ruby
